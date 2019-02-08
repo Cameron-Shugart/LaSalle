@@ -34,7 +34,7 @@ int main()
     ifstream infile;
     char cNum[10] ;
     int ref = 0;
-	slist blah;
+	slist hector;
 	slist hundred;
     infile.open ("./USAirportCodes.csv");
     if (infile.is_open())
@@ -53,7 +53,7 @@ int main()
             
 					if(!string(a->code).compare("AUS")) ref = c;
 			
-					blah.add(a);	
+					hector.add(a);	
 					
 						c++;
             
@@ -71,9 +71,9 @@ int main()
    
    // 
 slist list;
-Airport* farthest = (Airport*) blah.get(0);
-for (int i =0; i < blah.size()-1; i++) {
-	Airport* aPrime = (Airport*) blah.get(i);
+Airport* farthest = (Airport*) hector.get(0);
+for (int i =0; i < hector.size()-1; i++) {
+	Airport* aPrime = (Airport*) hector.get(i);
 	double x = distanceEarth(aPrime -> latitude, aPrime -> longitude, 30.1944, 97.67);
 	
 	if(x < 161) {
@@ -93,7 +93,7 @@ for (int y = 0; y < list.size(); y++) {
 
 
 
-#define pi 3.14159265358979323846
+#define pi 3.1415926535
 #define earthRadiusKm 6371.0
 
 // This function converts decimal degrees to radians
@@ -117,25 +117,14 @@ double rad2deg(double rad) {
  * @return The distance between the two points in kilometers
  */
 double distanceEarth(double lat1d, double lon1d, double lat2d, double lon2d) {
-  double lat1r, lon1r, lat2r, lon2r, u, v;
+  double lat1r, lon1r, lat2r, lon2r, marth, lucina;
   lat1r = deg2rad(lat1d);
   lon1r = deg2rad(lon1d);
   lat2r = deg2rad(lat2d);
   lon2r = deg2rad(lon2d);
   u = sin((lat2r - lat1r)/2);
   v = sin((lon2r - lon1r)/2);
-  return 2.0 * earthRadiusKm * asin(sqrt(u * u + cos(lat1r) * cos(lat2r) * v * v));
-}
-
-string Airport::toString() {
-	string str = "";
-	for (int x = 0; x < 5; x++) {
-		str += code[x];
-	}
-		str += "\nLongitude: ";
-		str += dtos(longitude);
-		str += "\nLatitude: " + dtos(latitude) + "\n\n";
-		return str;
+  return 2.0 * earthRadiusKm * asin(sqrt(marth * marth + cos(lat1r) * cos(lat2r) * lucina * lucina));
 }
 
 std::string Airport::dtos(double d) {	
@@ -151,6 +140,19 @@ std::string Airport::dtos(double d) {
 			}
 			return str;
 		}
+
+
+
+string Airport::toString() {
+	string str = "";
+	for (int x = 0; x < 5; x++) {
+		str += code[x];
+	}
+		str += "\nLongitude: ";
+		str += dtos(longitude);
+		str += "\nLatitude: " + dtos(latitude) + "\n\n";
+		return str;
+}
 
 void simpleSortTotal(slist s, int c) {
 	Airport* ref = (Airport*) s.get(c);
