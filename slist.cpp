@@ -1,14 +1,12 @@
 #include "slist.h"
 #include "math.h"
-#include "iostream"
+#include <"iostream">
 /*
 
 Class Library File
 
 */
 using namespace std;
-
-
 slist::slist() {
 	length = 0;
 }
@@ -84,15 +82,15 @@ void slist::insert(int index, void* value) {
 }
 
 void slist::exchg (int index1, int index2) {
-	Node* ghjjj = nullptr;
-	Node* ghaaa = nullptr;
+	Node* nullnode = NULL;
+	Node* nullnode2 = NULL;
 	for (int i = 0; i < index1; i++)
-		 ghjjj = ghjjj -> next;
+		 nullnode = nullnode -> next;
 	for (int j = 0; j < index2; j++)
-		 ghaaa = ghaaa -> next;
-	Node* ghlll = ghjjj;
-	ghjjj = ghaaa;
-	ghaaa = ghlll;
+		 nullnode2 = nullnode2 -> next;
+	Node* nullnode3 = nullnode;
+	nullnode = nullnode2;
+	nullnode2 = nullnode3;
 	
 }
 
